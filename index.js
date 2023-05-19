@@ -1,6 +1,18 @@
 "use strict";
-console.log('hellow typescript');
-console.log('hellow world');
-// console.log(true + 10);
-throw new Error('Some error');
+// typescript da asosiy malumot turlari
+let a = 12;
+// a = 'str';
+// a = 14;
+let b = 'text';
+// b = 12
+b = 'Rakhmatulloh';
+let c = { name: 'Rakhmatulloh' };
+let d = { name: 'Rakhmatulloh' };
+d.name = 'adad';
+console.log(d);
+let e = null;
+e = 12;
+e = { name: 'Rakhmatulloh' };
+e = [{ name: 'Rakhmatulloh' }];
+console.log(e);
 //# sourceMappingURL=index.js.map
