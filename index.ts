@@ -1,38 +1,53 @@
-// TypeScript => function, signature functions, function overloads
+// TypeScriptda type larni o'zgaritirish va birlashtirish
+// unknown type, union types, literal types, required and optional properties, operator in;
 
-// function decloration
-function pow(x: number, y: number): string {
-  return `${x}^${y}=${x ** y}`;
-}
-// arrow function
-const pow2 = (x: number, y: number): string => {
-  return `${x}^${y}=${x ** y}`;
-};
-// return qilmaydigan funksiyani void function deymiz
-function add(x: number, y: number): void {
-  console.log(x + y);
-}
-// tugallanmaydigan funksiyani never function deliladi
-function someFunc(x: string): never {
-  // ishlaydigan kod
-  throw new Error(x);
-  // ishlamaydigan kod
-}
-// signature function
-let c: (x: number, y: string) => string;
+// havfli usul
+let a: any = 10;
+let b: number = a;
 
-c = function (a: number, b: string): string {
-  return a + b;
-};
+let c: unknown = 20.1234;
+// let d: number = c;
+// havfsiz usul
+let e: number = <number>c;
+let f: number = c as number;
 
-// function overload
-function overloadFunc(x: number, y: number): number;
-function overloadFunc(x: string, y: number): string;
-function overloadFunc(x: any, y: any): any {
-  if (typeof x === 'number' || typeof y === 'number') {
-    return x + y;
-  } else {
-    return `${x + y}`;
-  }
+const g = (c as number).toFixed(3) + ', ' + (<number>c).toString();
+console.log(g);
+
+// union types
+let h: number | string = 10;
+h = 'tri';
+
+// literal types
+let k: 'sm' | 'md' | 'lg';
+k = 'sm';
+
+type Sizes = 'SM' | 'MD' | 'LG' | false;
+let k2: Sizes = 'SM';
+
+let k3: Sizes = false;
+k3 = 'SM';
+
+type OBJ = { name: string } | { age: number };
+let obj: OBJ;
+obj = { name: 'Rakhmatulloh' };
+obj = { age: 23 };
+obj = { name: 'Rakhmatulloh', age: 23 };
+
+type OBJ2 = { name: string } & { age: number };
+let obj2: OBJ2;
+// obj2 = { name: 'Rakhmatulloh' };
+// obj2 = { age: 23 };
+obj2 = { name: 'Rakhmatulloh', age: 23 };
+
+type OBJ3 = { name: string; age?: number };
+let obj3: OBJ3 = { name: 'Rakhmatilloh' };
+obj3 = { age: 29, name: 'Rakhmatulloh' };
+// obj3 = { age: 29 };
+
+// operator in
+if ('age' in obj3) {
+  console.log('mavjud');
+} else {
+  console.log('mavjud emas');
 }
-console.log(overloadFunc(12, 12));
